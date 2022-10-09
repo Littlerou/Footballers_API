@@ -1,6 +1,5 @@
 db = connect("mongodb://localhost:27017/footballers")
 
-// The following operation drops the footballers collection in the current database.
 db.footballers.drop()
 
 db.footballers.insertMany([

@@ -1,30 +1,29 @@
-
 version: '3'
-services: 
-  client: 
-      image: node:12.18.4
-      ports:
-          - 8080:8080
-      volumes:
+services:
+  client:
+    image: node:12.18.3
+    ports: 
+      - 8080:8080
+    volumes:
       - type: bind
-        source: ./client
+        source: ./Footballers-API-Client
         target: /code
-      working_dir: /code
-      command: bash -c "npn install & npm run dev"
+    working_dir: /code
+    command: bash -c "npm install && npm run dev"
   api:
-      image: node:12.18.4
-      ports:
-        - 3000:3000
-      environment:
-        - DB_CONNECTION=mongodb://footballers-admin:footballers-pass@db:27017
-        - DB_NAME=footballers
-      volumes:
+    image: node:12.18.3
+    ports:
+      - 3000:3000
+    environment:
+      - DB_CONNECTION=mongodb://footballers-admin:footballers-pass@db:27017
+      - DB_NAME=footballers
+    volumes:
       - type: bind
-        source: ./server
+        source: ./Footballers-API-server
         target: /code
-      working_dir: /code
-      command: bash -c "npn install & npm run dev"
-      depends_on: 
+    working_dir: /code
+    command: bash -c "npm install && npm run dev"
+    depends_on: 
       - db
   db:
     image: mongo:latest
@@ -37,4 +36,3 @@ services:
       - "./db/seed.js:/docker-entrypoint-initdb.d/seed.js:ro"
 volumes:
   dbdata:
-      

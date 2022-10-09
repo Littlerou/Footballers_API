@@ -1,6 +1,6 @@
-[submodule "client"]
-	path = client
-	url = ../client.git
-[submodule "server"]
-	path = server
-	url = ../server.git
+[submodule "Footballers-API-Client"]
+	path = Footballers-API-Client
+	url = https://github.com/Littlerou/Footballers-API-Client
+[submodule "Footballers-API-server"]
+	path = Footballers-API-server
+	url = https://github.com/Littlerou/Footballers-API-server
